@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Repository Politeknik Negeri Mando</title>
+    <title>Sistem Inventory</title>
     <!-- Favicon-->
     <link rel="shortcut icon" href="<?php echo base_url('assets/frontend/');?>images/ico/favicon.ico"> 
     <!-- Google Fonts -->
@@ -46,12 +46,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <form id="sign_in" action="<?php echo base_url('login/autentikasi'); ?>" method="POST" enctype="multipart/form-data">
 				
-                <div align="center">
-				<img src="<?php echo base_url('assets/images/logopnm.png'); ?>" style="width:50%; height:50%; ">
-				</div>
-                <br>
-                &nbsp;
-                    <div class="msg"><b>Repository Politeknik Negeri Manado</b> </div>
+                
+                    <div class="msg"><b>Sistem Inventory</b> </div>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
