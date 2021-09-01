@@ -9,9 +9,13 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="header">
-                            <h2>
+                            <h2 style="text-align:center;">
                               Selamat Datang di <?php echo $judul; ?> 
                             </h2>
+                            <div align="center">
+                            <img src="<?php echo base_url('assets/images/inv.jpg'); ?>" style="width:20%;" alt="">
+                            </div>
+                            
                             <br>
                             
                         <div class="body">

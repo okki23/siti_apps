@@ -164,17 +164,30 @@
                         </a>
                         <ul class="ml-menu"> 
                             <li>
-                                <a href="<?php echo base_url('dosen'); ?>">
+                                <a href="<?php echo base_url('barang'); ?>">
                                 <i class="material-icons">dns</i>
-                                    <span>Dosen</span>
+                                    <span>Barang</span>
                                 </a>
                             </li> 
                             <li>
-                                <a href="<?php echo base_url('mahasiswa'); ?>">
+                                <a href="<?php echo base_url('kategori_barang'); ?>">
                                 <i class="material-icons">dns</i>
-                                    <span>Mahasiswa</span>
+                                    <span>Kategori Barang</span>
                                 </a>
                             </li>  
+                            <li>
+                                <a href="<?php echo base_url('pegawai'); ?>">
+                                <i class="material-icons">dns</i>
+                                    <span>Pegawai</span>
+                                </a>
+                            </li> 
+                            <li>
+                                <a href="<?php echo base_url('jabatan'); ?>">
+                                <i class="material-icons">dns</i>
+                                    <span>Jabatan</span>
+                                </a>
+                            </li>  
+                            
                             <li>
                                 <a href="<?php echo base_url('user'); ?>">
                                 <i class="material-icons">dns</i>
@@ -186,61 +199,50 @@
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle" >
                             <i class="material-icons">dns</i>
-                            <span>Content</span>
+                            <span>Transaksi</span>
                         </a>
                         <ul class="ml-menu"> 
                             <li>
-                                <a href="<?php echo base_url('beranda'); ?>">
+                                <a href="<?php echo base_url('barang_masuk'); ?>">
                                 <i class="material-icons">dns</i>
-                                    <span>Beranda</span>
+                                    <span>Barang Masuk</span>
                                 </a>
                             </li> 
                             <li>
-                                <a href="<?php echo base_url('fitur'); ?>">
+                                <a href="<?php echo base_url('barnag_keluar'); ?>">
                                 <i class="material-icons">dns</i>
-                                    <span>Fitur</span>
-                                </a>
-                            </li>  
-                            <li>
-                                <a href="<?php echo base_url('alamat'); ?>">
-                                <i class="material-icons">dns</i>
-                                    <span>Info Alamat</span>
-                                </a>
-                            </li>  
-                            <li>
-                                <a href="<?php echo base_url('logo'); ?>">
-                                <i class="material-icons">dns</i>
-                                    <span>Logo</span>
-                                </a>
-                            </li>  
-                            <li>
-                                <a href="<?php echo base_url('header'); ?>">
-                                <i class="material-icons">dns</i>
-                                    <span>Header</span>
-                                </a>
-                            </li> 
-                            <li>
-                                <a href="<?php echo base_url('footer'); ?>">
-                                <i class="material-icons">dns</i>
-                                    <span>Footer / Copyright</span>
+                                    <span>Barang Keluar</span>
                                 </a>
                             </li>   
                         </ul>
                     </li>
- 
                     <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
+                        <a href="javascript:void(0);" class="menu-toggle" >
                             <i class="material-icons">dns</i>
-                            <span>Transaksi</span>
+                            <span>Report</span>
                         </a>
-                        <ul class="ml-menu">
-                 
-                    <li>
-                        <a href="<?php echo base_url('approve'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Approval Karya Ilmiah</span>
-                        </a>
+                        <ul class="ml-menu"> 
+                            <li>
+                                <a href="<?php echo base_url('report_masuk'); ?>">
+                                <i class="material-icons">dns</i>
+                                    <span>Barang Masuk</span>
+                                </a>
+                            </li> 
+                            <li>
+                                <a href="<?php echo base_url('report_keluar'); ?>">
+                                <i class="material-icons">dns</i>
+                                    <span>Barang Keluar</span>
+                                </a>
+                            </li>   
+                            <li>
+                                <a href="<?php echo base_url('report_stok'); ?>">
+                                <i class="material-icons">dns</i>
+                                    <span>Stock Opname</span>
+                                </a>
+                            </li>   
+                        </ul>
                     </li>
+  
                      
                     
                         </ul>
@@ -255,7 +257,7 @@
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; <a href="javascript:void(0);"> Sistem Repository Politeknik Negeri Manado
+                    &copy; <a href="javascript:void(0);"> <?php echo $judul; ?>
                 </div>
             </div>
             <!-- #Footer -->

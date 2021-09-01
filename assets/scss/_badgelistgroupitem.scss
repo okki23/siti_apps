@@ -9,14 +9,14 @@
 
 .list-group {
     .active {
-        background-color: #2196F3;
-        border-color: #2196F3;
+        background-color: #ff7f00;
+        border-color: #ff7f00;
 
         &:hover,
         &:focus,
         &:active {
-            background-color: #2196F3;
-            border-color: #2196F3;
+            background-color: #ff7f00;
+            border-color: #ff7f00;
         }
 
         .list-group-item-text {

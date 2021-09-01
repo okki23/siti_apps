@@ -45,9 +45,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="body">
 
                 <form id="sign_in" action="<?php echo base_url('login/autentikasi'); ?>" method="POST" enctype="multipart/form-data">
-				
-                
                     <div class="msg"><b>Sistem Inventory</b> </div>
+                    <div align="center">
+                    <img src="<?php echo base_url('assets/images/inv.jpg'); ?>" style="width:20%;" alt="">
+                    </div>
+                    
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
@@ -68,10 +70,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="row"> 
                         <div class="col-lg-12">
                             <button class="btn btn-block bg-blue waves-effect" type="submit">Masuk</button>
-                        </div>
-                         
-                    </div>
-                    
+                        </div> 
+                    </div> 
                 </form>
             </div>
         </div>
