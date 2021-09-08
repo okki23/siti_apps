@@ -86,18 +86,7 @@ f
                                                     <button type="button" onclick="PilihJabatan();" class="btn btn-primary"> Pilih Jabatan.. </button>
                                                 </span>
                                     </div> 
-									<div class="form-group">
-                                        <div class="form-line">
-											Upload pegawai 
-											<input type="file" name="user_image" id="user_image" class="form-control" onchange="PreviewGambar(this);" placeholder="pegawai" />  
-                                        </div>
-										   <input type="hidden" name="foto" id="foto">
-                                    </div>
-                                    <br>
-                                    <img onerror="this.onerror=null;this.src='<?php echo base_url('upload/image_prev.jpg'); ?>';" id="image1" src="<?php echo base_url('upload/image_prev.jpg');?>" style="height: 300px;" alt="..." class="img-rounded img-responsive">
-                                    <br>
-								  
-
+								 
 								    <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect"> <i class="material-icons">save</i> Simpan</button>
 
                                     <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal"> <i class="material-icons">clear</i> Batal</button>
@@ -181,15 +170,6 @@ f
 								<td> <p id="emaildtl"> </p> </td> 
 							</tr>
 							 
-							<tr>
-								<td style="font-weight:bold;"> Foto  </td> 
-								<td colspan="4">  : </td> 
-							</tr> 
-							<tr>
-								<td colspan="6" align="center">  
-								<img src="" class="img responsive" style="width:50%; height: 50%;" id="foto_dtl">
-								</td>
-							</tr>
 						 
 							 <div class="modal-footer">
 							  <button type="button" class="btn btn-danger" data-dismiss="modal"> X Tutup </button>
@@ -252,11 +232,7 @@ f
                  $("#telpdtl").html(result.telp); 
                  $("#alamatdtl").html(result.alamat); 
                  $("#emaildtl").html(result.email); 
-			 	  
-				 $("#foto_dtl").attr("src","upload/"+result.foto);
-				 
-				 
-				 
+			 	   
 			 }
 		 });
 	 }
@@ -279,10 +255,7 @@ f
                  $("#nama").val(result.nama);
                  $("#alamat").val(result.alamat);
                  $("#telp").val(result.telp);
-                 $("#email").val(result.email);
-                 $("#foto").val(result.foto);
-                  
-				 $('#image1').attr('src',"upload/"+result.foto);
+                 $("#email").val(result.email); 
                   
 			 }
 		 });
@@ -324,24 +297,11 @@ f
    
     }
 	}
-    
- 
-    $('.thumbnail').on('click',function(){
-        $('.modal-body').empty();
-        var title = $(this).parent('a').attr("title");
-        $('.modal-title').html(title);
-        $($(this).parents('div').html()).appendTo('.modal-body');
-        $('#Prev').modal({show:true});
-    });
-  
+     
 	function Simpan_Data(){
 	 
 		 var formData = new FormData($('#user_form')[0]); 
 
-          
-         var foto = $('#foto').val();
-		 var extension = $('#foto').val().split('.').pop().toLowerCase();  
-  
            
             $.ajax({
              url:"<?php echo base_url(); ?>pegawai/simpan_data",

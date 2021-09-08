@@ -24,7 +24,8 @@
                                     <thead>
                                         <tr>
                                            
-                                            <th style="width:5%;">Username</th>   
+                                            <th style="width:5%;">Username</th>  
+                                            <th style="width:5%;">Nama Pegawai</th>  
                                             <th style="width:10%;">Opsi</th> 
                                         </tr>
                                     </thead> 
@@ -56,14 +57,36 @@
                                         <div class="form-line">
                                             <input type="text" name="username" id="username" class="form-control" placeholder="Username" />
                                         </div>
-                                    </div> 
+                                    </div>
+                                    <div class="input-group">
+                                                <div class="form-line">
+                                                    <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" readonly="readonly" >
+                                                    <input type="hidden" name="id_pegawai" id="id_pegawai" readonly="readonly">
+                                                    
+                                                </div>
+                                                <span class="input-group-addon">
+                                                    <button type="button" onclick="CariKaryawan();" class="btn btn-primary"> Pilih Pegawai ... </button>
+                                                </span>
+                                    </div>           
                                     <div class="form-group">
                                         <div class="form-line">
                                             <span class="label label-danger">* Kosongkan Apabila Tidak Mengganti Password </span>
                                             <input type="password" name="password" id="password" class="form-control" placeholder="Password" /> 
                                         </div>
-                                    </div> 
+                                    </div>
+
+                                    <div class="form-group">
                                     
+                                        <label> User Type  </label>
+                                        <br>
+                                        <input type="hidden" name="level" id="level">
+
+                                        <button type="button" id="adminbtn" class="btn btn-default waves-effect "> Admin </button>
+
+                                        <button type="button" id="userbtn" class="btn btn-default waves-effect "> User </button>
+                                    
+                                    </div>
+                                 
 
                                    <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect"> <i class="material-icons">save</i> Simpan</button>
 
@@ -82,7 +105,7 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" >Cari Jabatan</h4>
+                            <h4 class="modal-title" >Cari Pegawai</h4>
                         </div>
                         <div class="modal-body">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
@@ -127,7 +150,24 @@
 
          
     });
-  
+
+    function CariKaryawan(){
+        $("#CariKaryawanModal").modal({backdrop: 'static', keyboard: false,show:true});
+    } 
+    $('#daftar_karyawan').DataTable( {
+            "ajax": "<?php echo base_url(); ?>pegawai/fetch_pegawai"           
+    });
+
+    var daftar_karyawan = $('#daftar_karyawan').DataTable();
+     
+     $('#daftar_karyawan tbody').on('click', 'tr', function () {
+         
+         var content = daftar_karyawan.row(this).data()
+         console.log(content);
+         $("#nama_pegawai").val(content[1]);
+         $("#id_pegawai").val(content[4]);
+         $("#CariKaryawanModal").modal('hide');
+     } );
        
      function Ubah_Data(id){
         $("#defaultModalLabel").html("Form Ubah Data");
@@ -140,7 +180,18 @@
              success:function(result){  
                  $("#defaultModal").modal('show'); 
                  $("#id").val(result.id);
-                 $("#username").val(result.username);   
+                 $("#username").val(result.username); 
+                 $("#id_pegawai").val(result.id_pegawai);
+                 $("#nama_pegawai").val(result.nama); 
+                 $("#level").val(result.level); 
+
+                 if(result.level == '1'){
+                    $("#adminbtn").attr('class','btn btn-primary');
+                    $("#userbtn").attr('class','btn btn-default');
+                 }else{
+                    $("#adminbtn").attr('class','btn btn-default');
+                    $("#userbtn").attr('class','btn btn-primary');
+                 }
              }
          });
      }
@@ -148,7 +199,13 @@
      function Bersihkan_Form(){
         $(':input').val(''); 
      }
- 
+
+     function CariAdminPPPU(){
+        $("#ModalCariAdminPPPU").modal({backdrop: 'static', keyboard: false,show:true});
+     }
+
+     
+
      function Hapus_Data(id){
         if(confirm('Anda yakin ingin menghapus data ini?'))
         {
@@ -181,7 +238,15 @@
     }
     }
     
-    
+   
+    $('.thumbnail').on('click',function(){
+        $('.modal-body').empty();
+        var title = $(this).parent('a').attr("title");
+        $('.modal-title').html(title);
+        $($(this).parents('div').html()).appendTo('.modal-body');
+        $('#Prev').modal({show:true});
+    });
+  
     function Simpan_Data(){
         //setting semua data dalam form dijadikan 1 variabel 
          var formData = new FormData($('#user_form')[0]); 
@@ -226,7 +291,15 @@
          }
 
     }
-      
+     
+
+     $('.datepicker').bootstrapMaterialDatePicker({
+        format: 'YYYY-MM-DD',
+        clearButton: true,
+        weekStart: 1,
+        time: false
+     });
+
      
        $(document).ready(function() {
            

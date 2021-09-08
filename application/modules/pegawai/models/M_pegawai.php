@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_pegawai extends Parent_Model { 
    
       var $nama_tabel = 'm_pegawai';
-      var $daftar_field = array('id','nip','nama','telp','alamat','email','id_jabatan','foto');
+      var $daftar_field = array('id','nip','nama','telp','alamat','email','id_jabatan');
       var $primary_key = 'id';
 
 	  

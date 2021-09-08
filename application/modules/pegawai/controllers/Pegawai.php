@@ -6,7 +6,7 @@ class Pegawai extends Parent_Controller {
   
 
   var $nama_tabel = 'm_pegawai';
-  var $daftar_field = array('id','nip','nama','telp','alamat','email','id_jabatan','foto');
+  var $daftar_field = array('id','nip','nama','telp','alamat','email','id_jabatan');
   var $primary_key = 'id';
  
   
@@ -50,16 +50,8 @@ class Pegawai extends Parent_Controller {
 	}
 	 
 	public function hapus_data(){
-		$id = $this->uri->segment(3);  
-    //cek apakah pegawai/gambar tersedia
-		$cek_pegawai = $this->db->where($this->primary_key,$id)->get($this->nama_tabel)->row(); 
-   
-		if($cek_pegawai->pegawai != '' || $cek_pegawai->pegawai != NULL){
-          //apabila pegawai ada maka dihapus,apabila sebaliknya maka tidak dihapus
-          unlink("upload/".str_replace(" ","_",$cek_pegawai->pegawai));
-		}   
-
-    $sqlhapus = $this->m_pegawai->hapus_data($id);
+		$id = $this->uri->segment(3);   
+    	$sqlhapus = $this->m_pegawai->hapus_data($id);
 		
 		if($sqlhapus){
 			$result = array("response"=>array('message'=>'success'));
@@ -79,11 +71,8 @@ class Pegawai extends Parent_Controller {
  
 
     $simpan_data = $this->m_pegawai->simpan_data($data_form,$this->nama_tabel,$this->primary_key,$id);
-    $simpan_pegawai = $this->upload_pegawai();
-  
- 
-	
-		if($simpan_data && $simpan_pegawai){
+    
+		if($simpan_data){
 			$result = array("response"=>array('message'=>'success'));
 		}else{
 			$result = array("response"=>array('message'=>'failed'));
@@ -92,16 +81,5 @@ class Pegawai extends Parent_Controller {
 		echo json_encode($result,TRUE);
 
 	}
- 
-  function upload_pegawai(){  
-    if(isset($_FILES["user_image"])){  
-        $extension = explode('.', $_FILES['user_image']['name']);   
-        $destination = './upload/' . $_FILES['user_image']['name'];  
-        return move_uploaded_file($_FILES['user_image']['tmp_name'], $destination);  
-         
-    }  
-  }  
-       
-
-
+   
 }

@@ -2,15 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
  
 class Login extends Parent_Controller {
- 
-  	var $nama_tabel_mhs = 'mahasiswa';
-  	var $daftar_field_mhs = array('id','nim','nama','jenkel','telp','alamat','email','password');
-  	var $primary_key_mhs = 'id';
-
-	var $nama_tabel_dsn = 'dosen';
-  	var $daftar_field_dsn = array('id','nidn','nama','jenkel','telp','alamat','email','password');
-  	var $primary_key_dsn = 'id';
-
+  
 	var $nama_tabel_user = 'm_user';
   	var $daftar_field_user = array('id','username','password');
   	var $primary_key_user = 'id';

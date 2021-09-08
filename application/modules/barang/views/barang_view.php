@@ -23,8 +23,7 @@
   
 									<thead>
 										<tr> 
-											<th style="width:5%;">Kategori Barang</th>
-                                            <th style="width:5%;">Sub Kategori Barang</th>
+											<th style="width:5%;">Kategori Barang</th> 
                                             <th style="width:5%;">Nama Barang</th>                                           
                                             <th style="width:10%;">Opsi</th> 
 										</tr>
@@ -62,25 +61,7 @@
                                                 <span class="input-group-addon">
                                                     <button type="button" onclick="CariKategori();" class="btn btn-primary"> Pilih Kategori... </button>
                                                 </span>
-                                    </div>
-
-                                    <div class="input-group">
-                                                <div class="form-line">
-                                                    <input type="text" name="nama_sub_kategori" id="nama_sub_kategori" class="form-control" readonly="readonly" >
-                                                    <input type="hidden" name="id_sub_kategori" id="id_sub_kategori" readonly="readonly" >
-                                                    
-                                                </div>
-                                                <span class="input-group-addon">
-                                                    <button type="button" onclick="CariSubKategori();" class="btn btn-primary"> Pilih Sub Kategori... </button>
-                                                </span>
-                                    </div>
-
-                                	<div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="period" id="period" class="datepickerperiod form-control" placeholder="Period" />
-                                        </div>
-                                    </div>
-                                    
+                                    </div>  
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="text" name="nama_barang" id="nama_barang" class="form-control" placeholder="Nama Barang" />
@@ -88,14 +69,9 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="qty_jkt" id="qty_jkt" class="form-control" placeholder="Qty Jakarta" />
+                                            <input type="text" name="qty" id="qty" class="form-control" placeholder="Qty" />
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="qty_subang" id="qty_subang" class="form-control" placeholder="Qty Subang" />
-                                        </div>
-                                    </div>
+                                    </div> 
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan" />
@@ -144,38 +120,7 @@
                     </div>
                 </div>
     </div>
-
-
-    <!-- modal cari subkategori -->
-    <div class="modal fade" id="CariSubKategoriModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" >Cari Sub Kategori</h4>
-                        </div>
-                        <div class="modal-body">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
-
-                                <br>
-                                <hr>
-
-                                 <table width="100%" class="table table-bordered table-striped table-hover " id="tabel_sub_kategori" > 
-                                    <thead>
-                                        <tr>  
-                                            <th style="width:15%;">Nama Sub Kategori</th> 
-                                            <th style="width:15%;">Action</th> 
-                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-                                    </tbody>  
-                                </table>  
-                       </div>
-                     
-                    </div>
-                </div>
-    </div>
-
+ 
     
      <!-- modal detail -->
      <div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
@@ -199,21 +144,13 @@
                                     <td>:</td>
                                     <td><div id="nama_kategoridtl"> </div></td>
                                 </tr>
+                           
                                 <tr>
-                                    <td>Sub Kategori Barang</td>
+                                    <td>Qty</td>
                                     <td>:</td>
-                                    <td><div id="nama_sub_kategoridtl"> </div></td>
+                                    <td><div id="qtydtl"> </div></td>
                                 </tr>
-                                <tr>
-                                    <td>Qty Jakarta</td>
-                                    <td>:</td>
-                                    <td><div id="qty_jktdtl"> </div></td>
-                                </tr>
-                                <tr>
-                                    <td>Qty Subang</td>
-                                    <td>:</td>
-                                    <td><div id="qty_subangdtl"> </div></td>
-                                </tr>
+                              
                                 <tr>
                                     <td>Keterangan</td>
                                     <td>:</td>
@@ -244,68 +181,17 @@
 			 url:"<?php echo base_url(); ?>barang/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
-			 success:function(result){ 
-                  
-				 //$("#DetailModal").modal('show'); 
+			 success:function(result){  
 				 $("#nama_barangdtl").html(result.nama_barang);
                  $("#nama_kategoridtl").html(result.nama_kategori);
-                 $("#nama_sub_kategoridtl").html(result.nama_sub_kategori); 
-                 $("#qty_jktdtl").html(result.qty_jkt);
-                 $("#qty_subangdtl").html(result.qty_subang);
+                 $("#qtydtl").html(result.qty); 
                  $("#keterangandtl").html(result.keterangan);  
                 
 			 }
 		 });
     } 
-   
-
-    function GetDataSubKategori(id){
-        console.log(id);
-        $.get("<?php echo base_url('barang/fetch_nama_sub_kategori_row/'); ?>"+id,function(result){
-            console.log(result);
-            var parse = JSON.parse(result);
-            $("#id_sub_kategori").val(id);
-            $("#nama_sub_kategori").val(parse.nama_sub_kategori);
-            $("#CariSubKategoriModal").modal('hide');
-        }); 
-    }
-
- 
-    function CariSubKategori(){
-        $("#CariSubKategoriModal").modal({backdrop: 'static', keyboard: false,show:true});
-
-         var id_kategori = $("#id_kategori").val();
-        
-        $('#tabel_sub_kategori').DataTable({
-            "processing" : true,
-            "ajax" : {
-                "url" : "<?php echo base_url('barang/fetch_sub_kategori_barang'); ?>",
-                "data":{id_kategori},
-                "type":"POST",
-                dataSrc : '',
-
-            },
- 
-
-            "columns" : [ {
-                "data" : "nama"
-            },{
-                "data" : "action"
-            }],
-
-            "rowReorder": {
-                "update": false
-            },
-
-            "destroy":true,
-        });
     
- 
-    } 
-
-
-
-    // cari direktorat
+   
     $('#daftar_kategori').DataTable( {
             "ajax": "<?php echo base_url(); ?>kategori_barang/fetch_kategori_barang"           
     }); 
@@ -313,8 +199,7 @@
     function CariKategori(){
         $("#CariKategoriModal").modal({backdrop: 'static', keyboard: false,show:true});
     } 
-   
-        
+    
         var daftar_kategori = $('#daftar_kategori').DataTable();
      
         $('#daftar_kategori tbody').on('click', 'tr', function () {
@@ -339,15 +224,10 @@
 				 $("#defaultModal").modal('show'); 
 				 $("#id").val(result.id);
                  $("#nama_barang").val(result.nama_barang);
-                 $("#qty_jkt").val(result.qty_jkt);
-                 $("#qty_subang").val(result.qty_subang);
-                 $("#qty").val(result.qty);
+                 $("#qty").val(result.qty); 
                  $("#keterangan").val(result.keterangan); 
                  $("#id_kategori").val(result.id_kategori);
-                 $("#nama_kategori").val(result.nama_kategori); 
-                 $("#id_sub_kategori").val(result.id_sub_kategori);
-                 $("#nama_sub_kategori").val(result.nama_sub_kategori); 
-                  
+                 $("#nama_kategori").val(result.nama_kategori);  
 			 }
 		 });
 	 }
