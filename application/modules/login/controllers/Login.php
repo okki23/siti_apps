@@ -25,7 +25,7 @@ class Login extends Parent_Controller {
 			$session = $this->m_login->autentikasi($username,$password)->row();
 			 
 			if($auth->num_rows() > 0){ 
-				$this->session->set_userdata(array('username'=>$session->username));
+				$this->session->set_userdata(array('username'=>$session->username,'userid'=>$session->id));
 				redirect(base_url('dashboard')); 
 			}else{
 				echo "<script language=javascript>
