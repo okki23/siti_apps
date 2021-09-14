@@ -209,7 +209,7 @@
                                 </a>
                             </li> 
                             <li>
-                                <a href="<?php echo base_url('barnag_keluar'); ?>">
+                                <a href="<?php echo base_url('barang_keluar'); ?>">
                                 <i class="material-icons">dns</i>
                                     <span>Barang Keluar</span>
                                 </a>

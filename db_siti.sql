@@ -26,13 +26,10 @@ CREATE TABLE `m_barang` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nama_barang` varchar(255) DEFAULT NULL,
   `id_kategori` varchar(255) DEFAULT NULL,
-  `id_sub_kategori` varchar(255) DEFAULT NULL,
-  `qty_subang` int(11) DEFAULT NULL,
-  `qty_jkt` int(11) DEFAULT NULL,
   `keterangan` varchar(100) DEFAULT NULL,
   `qty` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +38,7 @@ CREATE TABLE `m_barang` (
 
 LOCK TABLES `m_barang` WRITE;
 /*!40000 ALTER TABLE `m_barang` DISABLE KEYS */;
+INSERT INTO `m_barang` VALUES (1,'Sabun','3','OK','13'),(3,'Kue','2','OK','10');
 /*!40000 ALTER TABLE `m_barang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,7 +77,7 @@ CREATE TABLE `m_kategori` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nama_kategori` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,6 +172,61 @@ INSERT INTO `m_user` VALUES (1,'admin','0cc175b9c0f1b6a831c399e269772661 ','99',
 UNLOCK TABLES;
 
 --
+-- Table structure for table `t_keluar`
+--
+
+DROP TABLE IF EXISTS `t_keluar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_keluar` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id_barang` int(10) DEFAULT NULL,
+  `trans_out` int(10) DEFAULT NULL,
+  `keterangan` varchar(100) DEFAULT NULL,
+  `user_insert` int(10) DEFAULT NULL,
+  `date_insert` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_keluar`
+--
+
+LOCK TABLES `t_keluar` WRITE;
+/*!40000 ALTER TABLE `t_keluar` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_keluar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_masuk`
+--
+
+DROP TABLE IF EXISTS `t_masuk`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_masuk` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id_barang` int(10) DEFAULT NULL,
+  `trans_in` int(10) DEFAULT NULL,
+  `keterangan` varchar(100) DEFAULT NULL,
+  `user_insert` int(10) DEFAULT NULL,
+  `date_insert` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_masuk`
+--
+
+LOCK TABLES `t_masuk` WRITE;
+/*!40000 ALTER TABLE `t_masuk` DISABLE KEYS */;
+INSERT INTO `t_masuk` VALUES (1,1,10,'OK',1,'2021-09-10 15:53:23');
+/*!40000 ALTER TABLE `t_masuk` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping routines for database 'db_siti'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -186,4 +239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-08 20:21:16
+-- Dump completed on 2021-09-14  8:52:37
