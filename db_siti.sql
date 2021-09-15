@@ -38,7 +38,7 @@ CREATE TABLE `m_barang` (
 
 LOCK TABLES `m_barang` WRITE;
 /*!40000 ALTER TABLE `m_barang` DISABLE KEYS */;
-INSERT INTO `m_barang` VALUES (1,'Sabun','3','OK','13'),(3,'Kue','2','OK','10');
+INSERT INTO `m_barang` VALUES (1,'Sabun','3','OK','8'),(3,'Kue','2','OK','10');
 /*!40000 ALTER TABLE `m_barang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,7 +158,7 @@ CREATE TABLE `m_user` (
   `id_pegawai` varchar(255) DEFAULT NULL,
   `level` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -167,7 +167,7 @@ CREATE TABLE `m_user` (
 
 LOCK TABLES `m_user` WRITE;
 /*!40000 ALTER TABLE `m_user` DISABLE KEYS */;
-INSERT INTO `m_user` VALUES (1,'admin','0cc175b9c0f1b6a831c399e269772661 ','99',1),(2,'rudi','YQ==','3',1);
+INSERT INTO `m_user` VALUES (1,'admin','0cc175b9c0f1b6a831c399e269772661 ','99',1),(2,'rudi','YQ==','3',1),(3,'ruru','YQ==','3',1);
 /*!40000 ALTER TABLE `m_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,7 +186,7 @@ CREATE TABLE `t_keluar` (
   `user_insert` int(10) DEFAULT NULL,
   `date_insert` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,6 +195,7 @@ CREATE TABLE `t_keluar` (
 
 LOCK TABLES `t_keluar` WRITE;
 /*!40000 ALTER TABLE `t_keluar` DISABLE KEYS */;
+INSERT INTO `t_keluar` VALUES (1,1,5,'ok',3,'2021-09-15 08:50:33');
 /*!40000 ALTER TABLE `t_keluar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,4 +240,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-14  8:52:37
+-- Dump completed on 2021-09-15 16:01:24

@@ -148,7 +148,7 @@
             <!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
-                
+            
                     <ul class="list">
                     <li>
                         <a href="<?php echo base_url('dashboard'); ?>">
@@ -156,8 +156,10 @@
                             <span>Home  </span>
                         </a>
                     </li> 
-  
-                    <li>
+     <?php
+     if($this->session->userdata('level') == 1){
+     ?>
+<li>
                         <a href="javascript:void(0);" class="menu-toggle" >
                             <i class="material-icons">dns</i>
                             <span>Master</span>
@@ -196,6 +198,11 @@
                             </li>  
                         </ul>
                     </li>
+     <?php
+     }
+     ?>
+                    
+   
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle" >
                             <i class="material-icons">dns</i>
@@ -237,7 +244,7 @@
                             <li>
                                 <a href="<?php echo base_url('report_stok'); ?>">
                                 <i class="material-icons">dns</i>
-                                    <span>Stock Opname</span>
+                                    <span>Stok</span>
                                 </a>
                             </li>   
                         </ul>
